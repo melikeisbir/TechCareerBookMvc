@@ -28,26 +28,31 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KitapAdi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fiyati)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SayfaSayisi)
-            </td>
-            <td>
-                @Html.ActionLink("Düzenle", "EditKitap", new {  id=item.Id  }) |
-                @Html.ActionLink("Detay", "GetKitap", new { id=item.Id}) |
-                @Html.ActionLink("Sil", "DeleteKitap", new { id=item.Id}, new {onclick = "return confirm('Silmek istediğinizden emin misiniz?');"})
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KitapAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fiyati)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SayfaSayisi)
+                </td>
+                <td>
+                    @Html.ActionLink("Düzenle", "EditKitap", new { id = item.Id }) |
+                    @Html.ActionLink("Detay", "GetKitap", new { id = item.Id }) |
+                    @Html.ActionLink(
+                             "Sil",
+                             "DeleteKitap",
+                             new { id = item.Id },
+                             new { onclick = "return confirm('Silmek istediğinizden emin misiniz?');" })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

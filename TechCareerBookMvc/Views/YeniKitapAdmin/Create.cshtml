@@ -1,7 +1,82 @@
-﻿
+﻿@model TechCareerBookMvc.ViewModels.YeniKitapViewModel
+
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Create";
 }
 
-<h1>View</h1>
+<h1>Create</h1>
 
+<h4>KitapViewModel</h4>
+<hr />
+<div class="card">
+    <div class="card-header">
+        <h3 class="text-uppercase">Yeni Kitap Ekle</h3>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div class="row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="kitapAdi" class="control-label"></label>
+                        <input asp-for="kitapAdi" class="form-control" />
+                        <span asp-validation-for="kitapAdi" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ISBN" class="control-label"></label>
+                        <input asp-for="ISBN" class="form-control" />
+                        <span asp-validation-for="ISBN" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="fiyat" class="control-label"></label>
+                        <input asp-for="fiyat" class="form-control" />
+                        <span asp-validation-for="fiyat" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="KitapPicture" class="control-label"></label>
+                        <div class="custom-file">
+                            <input asp-for="KitapPicture" class="custom-file-input" />
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+                        <span asp-validation-for="KitapPicture" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="yayinlanmaTarihi" class="control-label"></label>
+                        <input asp-for="yayinlanmaTarihi" class="form-control" />
+                        <span asp-validation-for="yayinlanmaTarihi" class="text-danger"></span>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+
+
+            <div class="form-group">
+                <input type="submit" value="Oluştur" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Listeye Dön</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

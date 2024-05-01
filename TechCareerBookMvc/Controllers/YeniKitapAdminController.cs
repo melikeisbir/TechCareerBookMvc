@@ -31,7 +31,7 @@ namespace TechCareerBookMvc.Controllers
 
         //bu metodda ekrandan girilen değerleri alıp işleyecek metodumuz
         [HttpPost]
-        public async Task<IActionResult> Cre6ate(YeniKitapViewModel model)
+        public async Task<IActionResult> Create(YeniKitapViewModel model)
         {
             try
             {
@@ -119,6 +119,27 @@ namespace TechCareerBookMvc.Controllers
                 // git wwwroot klasörü altındaki Uploads klasöründeki ilgili resmi bul ve sil
                 string filePath = Path.Combine(_environment.WebRootPath, "Uploads", kitap.kitapResim);
                 System.IO.File.Delete(filePath);
+
+
+                YeniKitap guncellencekKitap = new YeniKitap();
+
+                guncellencekKitap.Id = model.Id;
+                guncellencekKitap.ISBN = model.ISBN;
+                guncellencekKitap.fiyat = model.fiyat;
+                guncellencekKitap.yayinlanmaTarihi = model.yayinlanmaTarihi;
+                string guncellenenYuklenenResimAdi = ResimYukle(model);
+                guncellencekKitap.kitapAdi = guncellenenYuklenenResimAdi;
+
+                _context.Entry(guncellencekKitap).State = EntityState.Modified;
+                try
+                {
+                    await _context.SaveChangesAsync(); //update 
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString()
+                        );
+                }
 
 
             }

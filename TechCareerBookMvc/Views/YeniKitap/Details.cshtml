@@ -1,7 +1,49 @@
-﻿
+﻿@model TechCareerBookMvc.Models.YeniKitap
+
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Yeni Kitap Detay</h1>
 
+<div>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapAdi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.kitapAdi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ISBN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.fiyat)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.fiyat)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.kitapResim)
+        </dt>
+        <dd>
+
+            <img src="~/Uploads/@Model.kitapResim" height="120" class="card-img-top" width="80" asp-append-version="true">
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.yayinlanmaTarihi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.yayinlanmaTarihi)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Listeye Dön</a>
+</div>

@@ -1,7 +1,23 @@
-﻿
+﻿@model IEnumerable<TechCareerBookMvc.Models.YeniKitap>
+
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
 
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+
+        <div class="card" style="width: 18rem;">
+            <img src="~/Uploads/@item.kitapResim" class="card-img-top" alt="@item.kitapAdi">
+            <div class="card-body">
+                <h5 class="card-title">@item.kitapAdi</h5>
+                <p class="card-text">@item.ISBN</p>
+                @Html.ActionLink("Detay", "Details", new { id = item.Id })
+            </div>
+        </div>
+    }
+</div>
